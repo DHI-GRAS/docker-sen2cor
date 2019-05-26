@@ -1,19 +1,23 @@
-FROM ubuntu:latest
+FROM debian:latest
 
-USER root
+WORKDIR /app
 
-WORKDIR /work
-RUN chmod 777 /work
-
-RUN apt-get update && \
-    apt-get -y install \
-      'wget' \
-      'file'
+RUN apt-get update && apt-get -y install \
+    'wget' \
+    'file' \
+    'gosu'
+# verify that gosu works
+RUN gosu nobody true
 
 # install Sen2Cor
-RUN wget http://step.esa.int/thirdparties/sen2cor/2.8.0/Sen2Cor-02.08.00-Linux64.run && \
-    chmod +x Sen2Cor-02.08.00-Linux64.run && \
-    ./Sen2Cor-02.08.00-Linux64.run && \
-    rm Sen2Cor-02.08.00-Linux64.run
+RUN wget http://step.esa.int/thirdparties/sen2cor/2.8.0/Sen2Cor-02.08.00-Linux64.run \
+    && sh Sen2Cor-02.08.00-Linux64.run \
+    && rm Sen2Cor-02.08.00-Linux64.run
 
-ENTRYPOINT ["/work/Sen2Cor-02.08.00-Linux64/bin/L2A_Process"]
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+WORKDIR /work
+
+ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["--help"]
