@@ -2,17 +2,11 @@
 
 A dockerized version of Sen2Cor 2.8.0.
 
-## Installation
+## Usage
 
 Simply run
 ```bash
-$ docker build -t sen2cor .
+$ docker build https://github.com/DHI-GRAS/docker-sen2cor.git -t sen2cor
+$ docker run sen2cor --help
 ```
-from this directory.
-
-## Usage
-
-```bash
-$ docker run sen2cor
-```
-executes `L2A_Process` from Sen2Cor.
+which executes `L2A_Process` from Sen2Cor.
