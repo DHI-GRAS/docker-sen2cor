@@ -1,6 +1,6 @@
 # Sen2Cor-Docker
 
-A dockerized version of Sen2Cor 2.8.0.
+A dockerized version of Sen2Cor 2.12.0.
 
 ## Installation
 

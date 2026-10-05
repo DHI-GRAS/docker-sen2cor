@@ -11,9 +11,9 @@ RUN apt-get update && \
       'file'
 
 # install Sen2Cor
-RUN wget http://step.esa.int/thirdparties/sen2cor/2.8.0/Sen2Cor-02.08.00-Linux64.run && \
-    chmod +x Sen2Cor-02.08.00-Linux64.run && \
-    ./Sen2Cor-02.08.00-Linux64.run && \
-    rm Sen2Cor-02.08.00-Linux64.run
+RUN wget http://step.esa.int/thirdparties/sen2cor/2.12.0/Sen2Cor-02.12.03-Linux64.run && \
+    chmod +x Sen2Cor-02.12.03-Linux64.run && \
+    ./Sen2Cor-02.12.03-Linux64.run && \
+    rm Sen2Cor-02.12.03-Linux64.run
 
-ENTRYPOINT ["/work/Sen2Cor-02.08.00-Linux64/bin/L2A_Process"]
+ENTRYPOINT ["/work/Sen2Cor-02.12.03-Linux64/bin/L2A_Process"]
